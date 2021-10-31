@@ -19,7 +19,21 @@
     <select id="query_call_and_count" resultType="map">
         select callnumber, count(*) as call_num from book group by callnumber;
     </select>
-
+<!--    查询所有被借走的Book_ID-->
+    <select id="query_borrowed_bookID" resultType="integer">
+        select book_id from book where borrowduedate is not null;
+    </select>
+<!--    查询callnumber号为某一特定值的数量-->
+    <select id="query_call_count" resultType="integer">
+        select count(callnumber) from book where callnumber = #{callNumber};
+    </select>
+<!--    查询数量小于某一数值的图书的callumber号-->
+    <select id="query_book_less" resultType="string">
+        select callnumber
+        from book
+        group by callnumber
+        having count(callnumber) &lt;= #{num};
+    </select>
 </mapper>
 
 

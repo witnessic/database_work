@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/example")
-public class ExampleController {
+public class  ExampleController {
     @Resource
     private BookService bookService;
 
